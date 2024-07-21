@@ -1,0 +1,122 @@
+.popupContainer {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popupWindow {
+  height: 40%;
+  width: 60%;
+  max-width: 400px;
+  max-height: 400px;
+  background-color: #f0e4ef;
+  border-radius: 10px;
+  box-shadow: 1vmin 1vmin 2vmin rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.popupWindow::-webkit-scrollbar {
+  display: none;
+}
+
+.header {
+  font-family: "FS Me Light", sans-serif;
+  color: #5c5874;
+  margin-bottom: 5px;
+  margin-left: 10%;
+}
+
+.mainButton {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  height: 8%;
+  min-height: 30px;
+  background-color: #a1869e;
+  border: none;
+  border-radius: 3px;
+  box-shadow: -1vmin 1vmin 2vmin rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  cursor: pointer;
+  font-family: "FS Me Regular", sans-serif;
+  font-size: 1.1rem;
+  user-select: none;
+  transition: 0.12s ease-in;
+}
+
+.mainButton:hover {
+  filter: brightness(90%);
+}
+
+.mainButton:active {
+  transform: scale(0.98);
+}
+
+.popupBottomMessages {
+  align-self: center;
+  color: #2c3333;
+  font-family: "FS Me Light", sans-serif;
+  text-align: center;
+}
+
+.closeButtonDiv {
+  align-self: flex-end;
+  margin-right: 10%;
+  margin-top: 3%;
+}
+
+.closeButton {
+  color: #ffffff;
+  background-color: #a1869e;
+  border-radius: 9px;
+  position: fixed;
+  scale: 1.4;
+  cursor: pointer;
+  transition: 0.12s ease-in;
+  padding: 5px;
+}
+
+.closeButton:hover {
+  filter: brightness(80%);
+}
+
+.closeButton:active {
+  scale: 1.2;
+}
+
+@media (max-width: 500px) {
+  .closeButtonDiv {
+    margin-right: 14%;
+    margin-top: 2%;
+  }
+}
+
+.errorMessagesDiv {
+  margin-top: 5px;
+  margin-left: 10%;
+  display: none;
+  align-items: center;
+}
+
+.errorIcon {
+  color: #800020;
+  margin-right: 4px;
+}
+
+.errorMessages {
+  margin: 0;
+  font-size: 0.9rem;
+  font-family: "FS Me Light", sans-serif;
+  color: #800020;
+}
