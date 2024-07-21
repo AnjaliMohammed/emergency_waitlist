@@ -32,7 +32,7 @@ const NavigationBar = ({ toggleAdminLoginPopup, name }) => {
       </div>
       <div className={styles.authenticationButtonsContainer}>
         {name ? (
-          <span className={styles.name}>{name.toUpperCase()}</span>
+          <span className={styles.name}>{name}</span>
         ) : (
           <NavButton
             buttonText="Admin Login"

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../styles/patientPage.module.css";
 import NavigationBar from "./navBar";
 import HospitalMap from "../images/map.png";
@@ -28,31 +29,55 @@ const resourcesInfo = {
     "Visiting hours are from 9 AM to 9 PM. Please adhere to the hospital's regulations for a smooth visit.",
 };
 
-const PatientPage = ({ patientName, patientCode }) => {
-  const [waitTime, setWaitTime] = useState("");
+const PatientPage = () => {
+  const navigate = useNavigate();
+  const [patientInfo, setPatientInfo] = useState({
+    patientName: "",
+    patientCode: "",
+    waitTime: "",
+  });
   const [selectedResource, setSelectedResource] = useState("");
 
   useEffect(() => {
-    // TODO: Implement fetching patient wait time from the database
-    // Simulate fetching patient wait time from a database
-    const data = "2 hours";
-    setWaitTime(data);
-  }, [patientName, patientCode]);
+    // Fetch patient information from PHP session
+    const fetchPatientInfo = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:8000/validatePatient.php",
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+        const result = await response.json();
+
+        if (result.success) {
+          setPatientInfo(result.state);
+        } else {
+          navigate("/");
+        }
+      } catch (error) {
+        console.error("Error fetching patient info:", error);
+      }
+    };
+
+    fetchPatientInfo();
+  }, []);
 
   return (
     <div className={styles.patientInfoPageContainer}>
-      <NavigationBar name={patientName} />
+      <NavigationBar name={patientInfo.patientName} />
       <div className={styles.content}>
         <div className={styles.patientInfo}>
           <h1>Patient Information</h1>
           <p>
-            <strong>Name:</strong> {patientName}
+            <strong>Name:</strong> {patientInfo.patientName}
           </p>
           <p>
-            <strong>Code:</strong> {patientCode}
+            <strong>Code:</strong> {patientInfo.patientCode}
           </p>
           <p>
-            <strong>Approximate Wait Time:</strong> {waitTime}
+            <strong>Approximate Wait Time:</strong> {patientInfo.waitTime}
           </p>
         </div>
         <div className={styles.resources}>

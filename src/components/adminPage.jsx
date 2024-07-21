@@ -1,37 +1,44 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../styles/adminPage.module.css";
 import NavigationBar from "./navBar";
 
-const AdminPage = ({ adminName }) => {
-  const [patients, setPatients] = useState([]);
+const AdminPage = () => {
+  const navigate = useNavigate();
+  const [adminInfo, setAdminInfo] = useState({
+    adminName: "",
+    patients: [],
+  });
 
   useEffect(() => {
-    const fetchPatients = async () => {
-      // TODO: Implement fetching data from the database
-      // Simulate fetching data from a database for now
-      const data = [
-        {
-          name: "John Doe",
-          code: "ABC",
-          injuryDescription: "Fracture",
-          waitTime: "2 hours",
-        },
-        {
-          name: "Jane Smith",
-          code: "DEF",
-          injuryDescription: "Burn",
-          waitTime: "1 hour",
-        },
-      ];
-      setPatients(data);
+    const fetchAdminInfo = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:8000/validateAdmin.php",
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+        const result = await response.json();
+
+        if (result.success) {
+          setAdminInfo(result.state);
+        } else {
+          console.log("Admin not logged in");
+          navigate("/");
+        }
+      } catch (error) {
+        console.error("Error fetching admin info:", error);
+      }
     };
 
-    fetchPatients();
+    fetchAdminInfo();
   }, []);
 
   return (
     <div className={styles.adminPageContainer}>
-      <NavigationBar adminName={adminName} />
+      <NavigationBar name={adminInfo.adminName} />
       <div className={styles.content}>
         <h1>Patient List</h1>
         <table className={styles.patientTable}>
@@ -44,7 +51,7 @@ const AdminPage = ({ adminName }) => {
             </tr>
           </thead>
           <tbody>
-            {patients.map((patient, index) => (
+            {adminInfo.patients.map((patient, index) => (
               <tr key={index}>
                 <td>{patient.name}</td>
                 <td>{patient.code}</td>

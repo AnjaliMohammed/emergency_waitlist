@@ -59,3 +59,12 @@
   border: none;
   border-radius: 5px;
 }
+
+.errorMessages {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.errorMessage {
+  margin: 5px 0;
+}
