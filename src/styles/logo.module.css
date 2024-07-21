@@ -1,0 +1,11 @@
+.logo {
+  width: 20%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+  background-color: #a1869e;
+  margin-left: 3vw;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+}

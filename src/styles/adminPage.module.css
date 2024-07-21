@@ -1,0 +1,53 @@
+.adminPageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0e4ef;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+.content {
+  width: 80%;
+  max-width: 1200px;
+  margin: 20px auto;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.patientTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.patientTable th,
+.patientTable td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.patientTable th {
+  background-color: #a1869e;
+  color: white;
+  text-align: center;
+}
+
+.patientTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.patientTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+.patientTable th,
+.patientTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 5px;
+}

@@ -1,0 +1,66 @@
+.containerDiv {
+  position: relative;
+  padding: 15px 0 0;
+  width: 80%;
+  align-self: center;
+  margin-bottom: 15px;
+}
+
+.inputBox {
+  font-family: "FS Me Light", sans-serif;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #2c3333;
+  background: transparent;
+  outline: 0;
+  font-size: 1.2rem;
+  color: #2c3333;
+  padding: 5px 0;
+  transition: border-color 0.2s;
+}
+
+.inputBox::placeholder {
+  color: transparent;
+  opacity: 0;
+}
+
+.inputBox:-ms-input-placeholder {
+  color: transparent;
+}
+
+.inputBox::-ms-input-placeholder {
+  color: transparent;
+}
+
+:placeholder-shown ~ .label {
+  font-size: 1.2rem;
+  cursor: text;
+  top: 20px;
+}
+
+.label {
+  font-family: "FS Me Light", sans-serif;
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #2c3333;
+  user-select: none;
+}
+
+.inputBox:focus {
+  padding-bottom: 5px;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #b06464, #0b1d51);
+  border-image-slice: 1;
+}
+
+.inputBox:focus ~ .label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #0b1d51;
+}

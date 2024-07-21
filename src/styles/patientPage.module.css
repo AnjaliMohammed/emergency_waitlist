@@ -1,0 +1,101 @@
+.patientInfoPageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0e4ef;
+  min-height: 100vh;
+  padding-top: 80px; /* Adjust based on the navbar height */
+}
+
+.content {
+  width: 80%;
+  max-width: 1200px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.patientInfo,
+.resources {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 45%;
+}
+
+.patientInfo h1,
+.resources h2 {
+  color: #6b486b;
+}
+
+.patientInfo p,
+.resources ul {
+  margin: 10px 0;
+}
+
+.resources ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.resources li {
+  margin: 10px 0;
+}
+
+.resources a {
+  text-decoration: none;
+  color: #6b486b;
+}
+
+.resources a:hover {
+  text-decoration: underline;
+}
+
+.resourceInfo {
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.resourceInfo h3 {
+  margin-top: 0;
+  color: #6b486b;
+}
+
+.resourceInfo p {
+  margin: 0;
+  white-space: pre-line;
+}
+
+.serviceList {
+  list-style: none;
+  padding-left: 0;
+}
+
+.serviceList li {
+  margin: 10px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.serviceList li::before {
+  content: "•";
+  color: #6b486b;
+  font-size: 1.2em;
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: 1;
+}
+
+.mapImage {
+  margin-top: 20px;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
