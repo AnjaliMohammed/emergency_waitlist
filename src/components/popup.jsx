@@ -19,6 +19,7 @@ const Popup = ({ closePopup }) => {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify({ email: emailInput, password: passwordInput }),
       });
 
@@ -26,9 +27,7 @@ const Popup = ({ closePopup }) => {
 
       if (result.success) {
         closePopup();
-        navigate("/admin", {
-          state: { adminName: result.email },
-        });
+        navigate("/admin");
       } else {
         setErrorMessages(result.errors);
       }

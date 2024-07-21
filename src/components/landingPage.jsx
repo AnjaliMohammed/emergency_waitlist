@@ -27,6 +27,7 @@ const LandingPage = () => {
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
           body: JSON.stringify({ name: patientName, code: patientCode }),
         }
       );
@@ -34,9 +35,7 @@ const LandingPage = () => {
       const result = await response.json();
 
       if (result.success) {
-        navigate("/patient", {
-          state: { patientName: result.name, patientCode: result.code },
-        });
+        navigate("/patient");
       } else {
         setErrorMessages(result.errors);
       }
