@@ -1,13 +1,10 @@
-import LandingPage from './components/landingPage';
-import Popup from './components/popup';
-import PopupInput from './components/popupInput';
+import React from 'react';
+import PatientPage from './components/patientPage';
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <LandingPage />
-    </div>
+    <PatientPage patientName={"Anjali Mohammed"} patientCode={"ABC"}/>
   );
-}
+};
 
 export default App;

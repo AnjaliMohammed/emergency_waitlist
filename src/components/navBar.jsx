@@ -3,7 +3,7 @@ import styles from "../styles/navBar.module.css";
 import Logo from "./logo";
 import NavButton from "./navButton";
 
-const NavigationBar = ({ toggleAdminLoginPopup }) => {
+const NavigationBar = ({ toggleAdminLoginPopup, name }) => {
   const homeButtonOnClick = () => {
     console.log("Home button clicked");
   };
@@ -31,10 +31,14 @@ const NavigationBar = ({ toggleAdminLoginPopup }) => {
         />
       </div>
       <div className={styles.authenticationButtonsContainer}>
-        <NavButton
-          buttonText="Admin Login"
-          onClickFunction={toggleAdminLoginPopup}
-        />
+        {name ? (
+          <span className={styles.name}>{name.toUpperCase()}</span>
+        ) : (
+          <NavButton
+            buttonText="Admin Login"
+            onClickFunction={toggleAdminLoginPopup}
+          />
+        )}
       </div>
     </div>
   );
