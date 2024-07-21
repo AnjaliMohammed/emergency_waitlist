@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import styles from "../styles/patientPage.module.css";
 import NavigationBar from "./navBar";
 import HospitalMap from "../images/map.png";
@@ -28,7 +29,9 @@ const resourcesInfo = {
     "Visiting hours are from 9 AM to 9 PM. Please adhere to the hospital's regulations for a smooth visit.",
 };
 
-const PatientPage = ({ patientName, patientCode }) => {
+const PatientPage = () => {
+  const location = useLocation();
+  const { patientName, patientCode } = location.state || {};
   const [waitTime, setWaitTime] = useState("");
   const [selectedResource, setSelectedResource] = useState("");
 
