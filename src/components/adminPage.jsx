@@ -10,6 +10,21 @@ const AdminPage = () => {
     patients: [],
   });
 
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/clearSession.php", {
+        method: "GET",
+        credentials: "include",
+      });
+      const result = await response.json();
+      if (result.success) {
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
+
   useEffect(() => {
     const fetchAdminInfo = async () => {
       try {
@@ -61,6 +76,9 @@ const AdminPage = () => {
             ))}
           </tbody>
         </table>
+        <button onClick={handleLogout} className={styles.logoutButton}>
+          Logout
+        </button>
       </div>
     </div>
   );
