@@ -105,7 +105,7 @@
 .errorMessagesDiv {
   margin-top: 5px;
   margin-left: 10%;
-  display: none;
+  display: flex;
   align-items: center;
 }
 

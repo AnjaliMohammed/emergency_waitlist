@@ -10,20 +10,21 @@ header("Access-Control-Allow-Headers: Content-Type");
 
 $data = json_decode(file_get_contents('php://input'), true);
 
-$fullName = $data['name'];
-$code = $data['code'];
+$email = $data['email'];
+$password = $data['password'];
 $errors = [];
 
-if (empty($fullName) || !preg_match('/^[a-zA-Z]{2,} [a-zA-Z]{2,}$/', $fullName)) {
-    $errors[] = 'Name must consist of first name and last name.';
+if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = 'Email must be valid and not empty.';
 }
 
-if (empty($code) || !preg_match('/^[A-Z]{3}$/', $code)) {
-    $errors[] = '3-letter code must consist of exactly 3 uppercase letters.';
+if (empty($password)) {
+    $errors[] = 'Password must not be empty.';
 }
 
 if (empty($errors)) {
-    echo json_encode(['success' => true, 'name' => $fullName, 'code' => $code]);
+    // For the sake of example, assume the email and password are correct
+    echo json_encode(['success' => true, 'email' => $email]);
 } else {
     echo json_encode(['success' => false, 'errors' => $errors]);
 }

@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import styles from "../styles/adminPage.module.css";
 import NavigationBar from "./navBar";
 
-const AdminPage = ({ adminName }) => {
+const AdminPage = () => {
+  const location = useLocation();
+  const { adminName } = location.state || {};
   const [patients, setPatients] = useState([]);
 
   useEffect(() => {
@@ -31,7 +34,7 @@ const AdminPage = ({ adminName }) => {
 
   return (
     <div className={styles.adminPageContainer}>
-      <NavigationBar adminName={adminName} />
+      <NavigationBar name={adminName} />
       <div className={styles.content}>
         <h1>Patient List</h1>
         <table className={styles.patientTable}>
