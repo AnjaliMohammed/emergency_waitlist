@@ -1,6 +1,11 @@
 <?php
-// Helper file to manually clear the session
 session_start();
 session_unset();
 session_destroy();
+
+header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: http://localhost:3000");
+header("Access-Control-Allow-Credentials: true");
+
+echo json_encode(['success' => true]);
 ?>

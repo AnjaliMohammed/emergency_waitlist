@@ -38,6 +38,21 @@ const PatientPage = () => {
   });
   const [selectedResource, setSelectedResource] = useState("");
 
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/clearSession.php", {
+        method: "GET",
+        credentials: "include",
+      });
+      const result = await response.json();
+      if (result.success) {
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
+
   useEffect(() => {
     // Fetch patient information from PHP session
     const fetchPatientInfo = async () => {
@@ -79,6 +94,9 @@ const PatientPage = () => {
           <p>
             <strong>Approximate Wait Time:</strong> {patientInfo.waitTime}
           </p>
+          <button onClick={handleLogout} className={styles.logoutButton}>
+            Logout
+          </button>
         </div>
         <div className={styles.resources}>
           <h2>Hospital Resources</h2>
