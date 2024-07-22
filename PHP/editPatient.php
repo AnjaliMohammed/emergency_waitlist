@@ -21,6 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
 
+        // Update session data
+        $stmt = $pdo->query("SELECT * FROM patients");
+        $_SESSION['patients'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
         if ($stmt->rowCount() > 0) {
             echo json_encode(['success' => true]);
         } else {

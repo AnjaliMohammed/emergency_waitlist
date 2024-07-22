@@ -11,7 +11,6 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 require 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    error_log("GET request received");
     if (isset($_SESSION['adminName']) && isset($_SESSION['patients'])) {
         echo json_encode([
             'success' => true,
@@ -49,7 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($admin) {
-                error_log("Admin found: " . print_r($admin, true));
                 if ($admin['password'] === $password) {
                     $stmt = $pdo->query("SELECT name, code, injury_description, wait_time FROM patients");
                     $patients = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -57,8 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // Store the data in the session
                     $_SESSION['adminName'] = $admin['name'];
                     $_SESSION['patients'] = $patients;
-
-                    error_log("Session Data after setting: " . print_r($_SESSION, true));
 
                     echo json_encode(['success' => true]);
                 } else {

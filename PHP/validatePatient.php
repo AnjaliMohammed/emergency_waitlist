@@ -11,7 +11,6 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 require 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    error_log("GET request received");
     if (isset($_SESSION['patientName']) && isset($_SESSION['patientCode']) && isset($_SESSION['waitTime'])) {
         echo json_encode([
             'success' => true,

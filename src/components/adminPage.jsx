@@ -9,7 +9,7 @@ const AdminPage = () => {
     adminName: "",
     patients: [],
   });
-  const [editingPatient, setEditingPatient] = useState(false);
+  const [editingPatient, setEditingPatient] = useState(null);
   const [showAddForm, setShowAddForm] = useState(false);
   const [errorMessages, setErrorMessages] = useState([]);
   const [newPatient, setNewPatient] = useState({
@@ -58,8 +58,8 @@ const AdminPage = () => {
     }
   };
 
-  const handleEdit = () => {
-    setEditingPatient(true);
+  const handleEdit = (patientCode) => {
+    setEditingPatient(patientCode);
   };
 
   const handleConfirmEdit = async (patientCode, newWaitTime) => {
@@ -83,7 +83,7 @@ const AdminPage = () => {
               : patient
           ),
         }));
-        setEditingPatient(false);
+        setEditingPatient(null);
       } else {
         alert("Error editing patient.");
       }
@@ -173,7 +173,7 @@ const AdminPage = () => {
                 <td>{patient.code}</td>
                 <td>{patient.injury_description}</td>
                 <td>
-                  {editingPatient ? (
+                  {editingPatient === patient.code ? (
                     <input
                       type="text"
                       className={styles.inputField}
@@ -194,7 +194,7 @@ const AdminPage = () => {
                   )}
                 </td>
                 <td>
-                  {editingPatient ? (
+                  {editingPatient === patient.code ? (
                     <button
                       className={styles.confirmButton}
                       onClick={() =>
@@ -206,7 +206,7 @@ const AdminPage = () => {
                   ) : (
                     <button
                       className={styles.editButton}
-                      onClick={() => handleEdit()}
+                      onClick={() => handleEdit(patient.code)}
                     >
                       Edit
                     </button>
