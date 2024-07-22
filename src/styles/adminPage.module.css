@@ -52,8 +52,10 @@
   border-radius: 5px;
 }
 
+.addButton,
 .logoutButton {
   margin-top: 20px;
+  margin-right: 20px;
   padding: 10px 20px;
   background-color: #a1869e;
   color: white;
@@ -63,6 +65,7 @@
   font-size: 16px;
 }
 
+.addButton:hover,
 .logoutButton:hover {
   background-color: #7b5677;
 }
@@ -97,4 +100,20 @@
 
 .deleteButton:hover {
   background-color: #ff1a1a;
+}
+
+.addPatientForm {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.errorMessages {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.errorMessage {
+  margin: 5px 0;
 }
