@@ -1,70 +1,136 @@
-# Getting Started with Create React App
+# Hospital Triage Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Welcome to the Hospital Triage Application! This web-based application helps staff and patients better understand wait times while in the emergency room. It provides a platform for patients to sign in and check their approximate wait times and for admin users to manage patient data.
 
-In the project directory, you can run:
+## How to Use
 
-### `npm start`
+### For Patients
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Patients can sign in with their name and a 3-character code to view their approximate wait time in the emergency room. The wait time is based on the severity of injuries and the length of time already in the queue.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### For Admins
 
-### `npm test`
+Admin users can log in to manage patient data, including adding new patients, editing existing patient wait times, and deleting patients from the system.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js and npm (Node Package Manager) installed
+- PHP installed
+- MySQL installed
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
 
-### `npm run eject`
+```bash
+git clone https://github.com/yourusername/hospital-triage.git
+cd hospital-triage
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Install dependencies:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Start the development server:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+4. Start the PHP server:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+cd PHP/
+php -S localhost:8000
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5. Open your browser and navigate to http://localhost:3000. Ensure cookies are enabled so PHP can communicate correctly with the display.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Features
 
-### Analyzing the Bundle Size
+- **Patient Sign-In**: Patients can sign in to check their approximate wait times and access various hospital resources.
+- **Admin Management**: Admin users can add, edit, and delete patient data.
+- **Responsive Design**: The application is designed to be responsive and user-friendly.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Implementation
 
-### Making a Progressive Web App
+## Technology Stack
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- HTML, CSS, JavaScript (React.js), PHP, MySQL
 
-### Advanced Configuration
+## React Components
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### LandingPage Component
 
-### Deployment
+- Manages the patient sign-in process.
+- Handles patient data and communication with the backend.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### AdminPage Component
 
-### `npm run build` fails to minify
+- Displays a list of patients.
+- Allows admin users to add, edit, and delete patient data.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### PatientPage Component
+
+- Displays patient information.
+- Allows patients to view hospital map, see various services, etc.
+
+
+## Design System
+
+This repository documents the design system for the Hospital Triage website.
+
+[Design System](./src/docs/design_system.md)
+
+## State Management
+
+The user information is managed using the PHP session:
+
+#### Admin Session
+- `adminName`: Name of administrator using application.
+- `patients`: Full list of patients currently in queue.
+
+#### Admin Session
+- `patientName`: Name of patient using application.
+- `patientCode`: Three character code associated with the patient.
+- `waitTime`: String describing the amount of remaining before the patient will be treated.
+
+
+## Examples of Perspectives:
+
+<br>
+
+- Landing Page
+  
+  <img width="1671" alt="landingPage" src="https://github.com/user-attachments/assets/7fc3dc05-83d7-4280-a5f5-83fbe1a803b3">
+  <br>
+  <br>
+  <br>
+  <br>
+
+- Patient Page
+  
+  <img width="1649" alt="patientPage" src="https://github.com/user-attachments/assets/22ca677e-7412-44f1-8e3c-03158d884a0d">
+  <br>
+  <br>
+  <br>
+  <br>
+
+- Admin Page
+  
+  <img width="1666" alt="adminPage" src="https://github.com/user-attachments/assets/61fc2cfb-b6fe-48b1-b493-dbcf85b378ad">
+  <br>
+  <br>
+
+  
+
+# Collaborators
+
+Group 41: Mohamad Kassas and Anjali Mohammed
