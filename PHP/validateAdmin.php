@@ -8,11 +8,9 @@ header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 
-error_log("Session ID: " . session_id());
-error_log("Session Data: " . print_r($_SESSION, true));
+require 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    error_log("GET request received");
     if (isset($_SESSION['adminName']) && isset($_SESSION['patients'])) {
         echo json_encode([
             'success' => true,
@@ -43,32 +41,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     if (empty($errors)) {
-        // TODO: Implement actual fetching of name and list of patients from database
-        
-        // Simulate fetching info from a database
-        $adminName = "Dr. Isaac Newton";
-        $patients = [
-            [
-                "name" => "John Doe",
-                "code" => "ABC",
-                "injuryDescription" => "Fracture",
-                "waitTime" => "2 hours",
-            ],
-            [
-                "name" => "Jane Smith",
-                "code" => "DEF",
-                "injuryDescription" => "Burn",
-                "waitTime" => "1 hour",
-            ],
-        ];
+        try {
+            $stmt = $pdo->prepare("SELECT name, password FROM admins WHERE email = :email");
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Store the data in the session
-        $_SESSION['adminName'] = $adminName;
-        $_SESSION['patients'] = $patients;
+            if ($admin) {
+                if ($admin['password'] === $password) {
+                    $stmt = $pdo->query("SELECT name, code, injury_description, wait_time FROM patients");
+                    $patients = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        error_log("Session Data after setting: " . print_r($_SESSION, true));
+                    // Store the data in the session
+                    $_SESSION['adminName'] = $admin['name'];
+                    $_SESSION['patients'] = $patients;
 
-        echo json_encode(['success' => true]);
+                    echo json_encode(['success' => true]);
+                } else {
+                    $errors[] = 'Invalid password.';
+                    echo json_encode(['success' => false, 'errors' => $errors]);
+                }
+            } else {
+                $errors[] = 'Admin not found.';
+                echo json_encode(['success' => false, 'errors' => $errors]);
+            }
+        } catch (PDOException $e) {
+            $errors[] = 'Database error: ' . $e->getMessage();
+            echo json_encode(['success' => false, 'errors' => $errors]);
+        }
     } else {
         echo json_encode(['success' => false, 'errors' => $errors]);
     }

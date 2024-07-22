@@ -52,8 +52,10 @@
   border-radius: 5px;
 }
 
+.addButton,
 .logoutButton {
   margin-top: 20px;
+  margin-right: 20px;
   padding: 10px 20px;
   background-color: #a1869e;
   color: white;
@@ -63,6 +65,55 @@
   font-size: 16px;
 }
 
+.addButton:hover,
 .logoutButton:hover {
   background-color: #7b5677;
+}
+
+.inputField {
+  width: 50%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.editButton,
+.confirmButton,
+.deleteButton {
+  background-color: #6b486b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.editButton:hover {
+  background-color: #289828;
+}
+
+.confirmButton:hover {
+  background-color: blue;
+}
+
+.deleteButton:hover {
+  background-color: #ff1a1a;
+}
+
+.addPatientForm {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.errorMessages {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.errorMessage {
+  margin: 5px 0;
 }
