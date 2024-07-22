@@ -70,8 +70,8 @@ const AdminPage = () => {
               <tr key={index}>
                 <td>{patient.name}</td>
                 <td>{patient.code}</td>
-                <td>{patient.injuryDescription}</td>
-                <td>{patient.waitTime}</td>
+                <td>{patient.injury_description}</td>
+                <td>{patient.wait_time}</td>
               </tr>
             ))}
           </tbody>
