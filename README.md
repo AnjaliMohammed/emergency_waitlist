@@ -8,15 +8,15 @@ Welcome to the Hospital Triage Application! This web-based application helps sta
 
 ### For Patients
 
-Patients can sign in with their name and a 3-character code to view their approximate wait time in the emergency room. The wait time is based on the severity of injuries and the length of time already in the queue.
-Sample Patient Username: John Doe
-Sample Patent 3-Character Code: AB1
+Patients can sign in with their name and a 3-character code to view their approximate wait time in the emergency room. The wait time is based on the severity of injuries and the length of time already in the queue.<br><br>
+<strong> Sample Patient Username </strong>: John Doe<br>
+<strong> Sample Patent 3-Character Code </strong>: AB1<br>
 
 ### For Admins
 
-Admin users can log in to manage patient data, including adding new patients, editing existing patient wait times, and deleting patients from the system.
-Admin Username: mohamad.kassas@hospitaltriage.com
-Admin Password: mohamad123
+Admin users can log in to manage patient data, including adding new patients, editing existing patient wait times, and deleting patients from the system.<br><br>
+<strong> Admin Username </strong>: mohamad.kassas@hospitaltriage.com<br>
+<strong> Admin Password </strong>: mohamad123<br>
 
 ## Getting Started
 
