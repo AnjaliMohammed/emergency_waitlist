@@ -54,8 +54,11 @@ cd PHP/
 php -S localhost:8000
 ```
 
-5. Open your browser and navigate to http://localhost:3000. Ensure cookies are enabled so PHP can communicate correctly with the display.
+5. Open your browser and navigate to http://localhost:3000.
 
+⚠️ WARNINGS: 
+- This application cannot be run on university WiFi, as the university WiFi blocks accesses to the Database.
+- Ensure that you have cookies enabled so PHP can communicate correctly with the Front-End
 
 # Features
 
